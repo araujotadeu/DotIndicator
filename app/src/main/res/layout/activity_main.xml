@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.araujotadeu.dot_indicator.lib.DotIndicatorView
+        android:id="@+id/testDefault"
+        app:dotSize="24dp"
+        app:dotSpace="4dp"
+        app:dotCount="3"
+        app:selectedColor="#0000ff"
+        app:notSelectedColor="#ff00ff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.araujotadeu.dot_indicator.lib.ExpandedDotIndicatorView
+        android:id="@+id/testExpanded"
+        app:dotSize="24dp"
+        app:dotSpace="4dp"
+        app:dotCount="3"
+        android:layout_marginTop="20dp"
+        app:dotColor="#ff0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.araujotadeu.dot_indicator.lib.WormDotIndicatorView
+        android:id="@+id/testWorm"
+        app:dotSize="24dp"
+        app:dotSpace="8dp"
+        app:dotCount="3"
+        android:layout_marginTop="20dp"
+        app:dotColor="#0000ff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Press me!" />
+
+</LinearLayout>
