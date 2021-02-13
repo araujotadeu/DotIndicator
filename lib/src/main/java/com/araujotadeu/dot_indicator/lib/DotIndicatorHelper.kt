@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.TransitionDrawable
+import android.graphics.drawable.shapes.OvalShape
 import android.graphics.drawable.shapes.RoundRectShape
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ internal class DotIndicatorHelper(resources : Resources, val listener : DotIndic
     private val animationDuration = resources.getInteger(android.R.integer.config_shortAnimTime)
     private var scrollListener: RecyclerView.OnScrollListener? = null
 
-    fun createDrawable(color: Int, dotSize : Int): Drawable {
+    fun createRoundRectDrawable(color: Int, dotSize : Int): Drawable {
         val radius = dotSize / 2f
         val radiusArray = floatArrayOf(radius, radius, radius, radius, radius, radius, radius, radius)
         val shapeDrawable = ShapeDrawable(RoundRectShape(radiusArray, null, null))
@@ -25,12 +26,21 @@ internal class DotIndicatorHelper(resources : Resources, val listener : DotIndic
         return shapeDrawable
     }
 
-    fun createResizeAnimation(view: View, from: Int, to: Int): ValueAnimator {
+    fun createOvalDrawable(color: Int): Drawable {
+        val shapeDrawable = ShapeDrawable(OvalShape())
+        shapeDrawable.paint.color = color
+        return shapeDrawable
+    }
+
+    fun createResizeAnimation(view: View, from: Int, to: Int, expandWidth : Boolean = true, expandHeight : Boolean = true): ValueAnimator {
         val anim = ValueAnimator.ofInt(from, to)
         anim.addUpdateListener { valueAnimator ->
             val value = valueAnimator.animatedValue as Int
             val layoutParams: ViewGroup.LayoutParams = view.layoutParams
-            layoutParams.width = value
+            if (expandWidth)
+                layoutParams.width = value
+            if (expandHeight)
+                layoutParams.height = value
             view.layoutParams = layoutParams
         }
         anim.duration = animationDuration.toLong()

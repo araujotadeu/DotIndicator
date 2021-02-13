@@ -70,7 +70,8 @@ class ExpandedDotIndicatorView @JvmOverloads constructor(
             for (i in 0 until count) {
                 addView(View(context).apply {
                     alpha = dotAlphaNotSelected
-                    background = helper.createDrawable(dotColor, dotSize)
+                    //background = helper.createRoundRectDrawable(dotColor, dotSize)
+                    background = helper.createOvalDrawable(dotColor)
                     layoutParams = LayoutParams(dotSize, dotSize).apply {
                         setMargins(dotSpace, 0, dotSpace, 0)
                     }

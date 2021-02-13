@@ -65,7 +65,7 @@ class WormDotIndicatorView @JvmOverloads constructor(
             for (i in 0 until count) {
                 addView(View(context).apply {
                     alpha = dotAlphaNotSelected
-                    background = helper.createDrawable(dotColor, dotSize)
+                    background = helper.createRoundRectDrawable(dotColor, dotSize)
                     layoutParams = LayoutParams(dotSize, dotSize).apply {
                         marginStart = dotSpace * i + dotSize * i
                     }
@@ -74,7 +74,7 @@ class WormDotIndicatorView @JvmOverloads constructor(
 
             selectedView = View(context).apply {
                 alpha = dotAlphaSelected
-                background = helper.createDrawable(dotColor, dotSize)
+                background = helper.createRoundRectDrawable(dotColor, dotSize)
                 layoutParams = LayoutParams(dotSize, dotSize)
                 visibility = INVISIBLE
             }
@@ -157,15 +157,6 @@ class WormDotIndicatorView @JvmOverloads constructor(
                     set.start()
 
                 }
-
-/*                list.add(helper.createMoveXAnimation(getChildAt(position), (oldView.layoutParams as LayoutParams).leftMargin, (newView.layoutParams as LayoutParams).leftMargin))
-                val set = AnimatorSet()
-                set.playTogether(list as Collection<Animator>?)
-
-                step1.addListener(onEnd = {
-                  set.start()
-                })
-                step1.start()*/
             }
 
             currentPosition = position

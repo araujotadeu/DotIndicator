@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 
+// TODO add expand type property
+
 class DotIndicatorView @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
@@ -60,7 +62,7 @@ class DotIndicatorView @JvmOverloads constructor(
 
             for (i in 0 until count) {
                 addView(View(context).apply {
-                    background = helper.createDrawable(notSelectedColor, dotSize)
+                    background = helper.createRoundRectDrawable(notSelectedColor, dotSize)
                     layoutParams = LayoutParams(dotSize, dotSize).apply {
                         setMargins(dotSpace, 0, dotSpace, 0)
                     }
@@ -75,9 +77,9 @@ class DotIndicatorView @JvmOverloads constructor(
         takeIf { currentPosition != position }?.apply {
 
             if (currentPosition >= 0) {
-                helper.executeColorTransitionAnimation(getChildAt(currentPosition), helper.createDrawable(selectedColor, dotSize), helper.createDrawable(notSelectedColor, dotSize))
+                helper.executeColorTransitionAnimation(getChildAt(currentPosition), helper.createRoundRectDrawable(selectedColor, dotSize), helper.createRoundRectDrawable(notSelectedColor, dotSize))
             }
-            helper.executeColorTransitionAnimation(getChildAt(position), helper.createDrawable(notSelectedColor, dotSize), helper.createDrawable(selectedColor, dotSize))
+            helper.executeColorTransitionAnimation(getChildAt(position), helper.createRoundRectDrawable(notSelectedColor, dotSize), helper.createRoundRectDrawable(selectedColor, dotSize))
 
             currentPosition = position
 
